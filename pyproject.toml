@@ -1,0 +1,51 @@
+[build-system]
+    requires = [
+        "setuptools>=65.6.2",
+        "wheel",    
+    ]
+    build-backend = "setuptools.build_meta"
+
+[project]
+    name = "smart_kiln"
+    version = "0.0.1"
+    requires-python = ">=3.9"
+    description = "Smart Kiln"
+    dynamic = ["readme"]
+        
+    dependencies = [        
+        "scipy",
+        "numpy",
+        "scikit-image",
+        "opencv-python",
+
+    ]
+
+
+[tool.setuptools.dynamic]
+    readme = {file = "README.md"}
+
+
+[project.optional-dependencies]
+    qa  = ["pre-commit"]    
+    test = [
+        "pytest",
+        "pytest-cov",
+        "coverage",
+        "ipdb",
+        "black",
+        "flake8",
+        ]
+
+
+
+[tool.setuptools]
+    zip-safe    = false
+    package-dir = {"" = "src"}
+
+
+[tool.black]
+    line-length = 120
+
+[tool.flake8]
+    line-length = 120
+    ignore = ["W503", "E203"]
